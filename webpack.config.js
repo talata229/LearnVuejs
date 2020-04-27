@@ -16,7 +16,7 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ],
-      }, {
+      },      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -35,8 +35,8 @@ module.exports = {
         loader: 'file-loader',
         options: {
           // name: '[name].[ext]?[hash]'
-          name: function (file) {
-            return '/assets/[name].[ext]?[hash]';
+          name: function(file) {
+            return 'assets/[name].[ext]?[hash]';
           }
         }
       }
