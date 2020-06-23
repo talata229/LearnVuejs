@@ -1,5 +1,8 @@
 <template>
   <header>
+    <ul>
+      <li v-for="(user, index) in listUser" v-bind:key="index">{{user.email}}</li>
+    </ul>
     <h1>
       {{ title }}
       <br />
@@ -9,15 +12,23 @@
 </template>
 
 <script>
+import ListUser from "./ListUser";
 export default {
   name: "comp-header",
   props: {
-    title: String
+    title: String,
+    listUser: {
+      type: Array,
+      default: []
+    }
   },
   data() {
     return {
       text: "Header"
     };
+  },
+  components: {
+    ListUser
   },
   methods: {
     changeTitleHeader(e) {

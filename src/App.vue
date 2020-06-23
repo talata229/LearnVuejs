@@ -2,14 +2,20 @@
   <div id="app">
     <div class="container">
       <button v-on:click="title ='Học lập trình Vuejs'">Thay doi title tu Component App.vue</button>
-      <comp-header v-bind:title="title" v-on:changeTitleEvent="handleChangeTitle" />
-      <list-user v-bind:listUser="listUser" />
+      <comp-header
+        v-bind:title="title"
+        v-on:changeTitleEvent="handleChangeTitle"
+        v-bind:listUser="listUser"
+      />
+      <list-user v-bind:listUser="listUser" v-on:deleteUserEvent="handleDeleteUser" />
       <comp-footer v-bind:title="title" />
+      <demo-ref></demo-ref>
     </div>
   </div>
 </template>
 
 <script>
+import DemoRef from "./components/DemoRef";
 import CompHeader from "./components/CompHeader.vue";
 import CompFooter from "./components/CompFooter.vue";
 import ListUser from "./components/ListUser.vue";
@@ -31,12 +37,17 @@ export default {
   components: {
     CompHeader,
     CompFooter,
-    ListUser
+    ListUser,
+    DemoRef
   },
   methods: {
     handleChangeTitle(data) {
       this.title = data.title;
       console.log("Handle change title App.vue", data);
+    },
+    handleDeleteUser(data) {
+      console.log("App", data);
+      this.listUser = this.listUser.filter(user => user.id !== data);
     }
   }
 };
